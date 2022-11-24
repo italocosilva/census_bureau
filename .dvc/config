@@ -1,2 +1,5 @@
+[core]
+    remote = s3
 ['remote "s3"']
-    url = s3://italocosilva-census-bureau
+    url = s3://italocosilva-census-bureau/data
+    region = sa-east-1
