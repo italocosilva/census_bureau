@@ -2,8 +2,14 @@
 
 1. Conda
 
-## Setup enviroment
+## Instructions
 
-```console
-conda create -n census-bureau --file requirements.txt -c conda-forge
-```
+1. How to setup environment
+    ```console
+    conda create -n census-bureau --file requirements.txt -c conda-forge
+    ```
+
+2. How to train model
+    ```console
+    python model/train_model.py
+    ```
