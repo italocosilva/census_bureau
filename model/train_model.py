@@ -59,6 +59,9 @@ print(
         FBeta: {fbeta:.1%}"
 )
 
+print(test.iloc[0].to_dict())
+print(preds_test[0])
+
 # Compute metrics per slice and saves it
 path = 'outputs/slice_output.txt'
 if os.path.exists(path):

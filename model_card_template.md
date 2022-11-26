@@ -18,6 +18,12 @@ The remaining 20% data was used as test data.
 
 ## Metrics
 
+Evaluated metrics:
+
+* Precision: TP / (TP + FP)
+* Recall: TP / (TP + FN)
+* FBeta: The FBeta balances the precision and recall.
+
 | Group | Precision | Recall | FBeta |
 |-------|-----------|--------|-------|
 | Train |   78.7%   | 59.1%  | 67.5% |
