@@ -1,3 +1,4 @@
+import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 
@@ -65,3 +66,42 @@ def inference(model, X):
     preds = model.predict(X)
 
     return preds
+
+
+def compute_slice_metrics(y, preds, slice_column):
+    """
+    Calculate metrics for each value in slice_column using precision, recall,
+    and F1.
+
+    Inputs
+    ------
+    y : np.array
+        Known labels, binarized.
+    preds : np.array
+        Predicted labels, binarized.
+    slice_column : pd.Series
+        Column used to compute metrics for each unique value.
+    Returns
+    -------
+    metrics : pd.DataFrame
+        DataFrame containing precision, recall and fbeta for each value.
+    """
+    metrics = {
+        'column_value': [],
+        'precision': [],
+        'recall': [],
+        'fbeta': []
+    }
+
+    for value in slice_column.unique():
+        precision, recall, fbeta = compute_model_metrics(
+            y[slice_column == value],
+            preds[slice_column == value]
+        )
+
+        metrics['column_value'].append(slice_column.name + '_' + value)
+        metrics['precision'].append(precision)
+        metrics['recall'].append(recall)
+        metrics['fbeta'].append(fbeta)
+
+    return pd.DataFrame(metrics)
