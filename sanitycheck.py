@@ -1,4 +1,4 @@
-import path
+from os import path
 import argparse
 import importlib
 import inspect
