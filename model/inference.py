@@ -4,9 +4,8 @@ from ml.data import process_data
 from ml.model import inference
 import json
 
-if __name__ == '__main__':
-    df = pd.read_csv("./data/census.csv", skipinitialspace=True)[:2]
 
+def infer(df):
     cat_features = [
         "workclass",
         "education",
@@ -32,6 +31,14 @@ if __name__ == '__main__':
     )
 
     preds = inference(model, X)
+
+    return preds
+
+
+if __name__ == '__main__':
+    df = pd.read_csv("./data/census.csv", skipinitialspace=True)[:2]
+
+    preds = infer(df)
 
     for row in range(df.shape[0]):
         print(json.dumps(df.iloc[row].to_dict()))
